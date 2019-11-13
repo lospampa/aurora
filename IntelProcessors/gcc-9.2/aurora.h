@@ -11,6 +11,7 @@
 #include <linux/perf_event.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <stdio.h>
 
 /*define RAPL Environment*/
 
