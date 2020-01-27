@@ -32,7 +32,18 @@ void aurora_init(int aurora, int start_search){
                 auroraKernels[i].lastResult = 0.0;
                 idKernels[i]=0;
         }
-
+	/*auroraKernels[0].bestThread=2;
+	auroraKernels[1].bestThread=16;
+	auroraKernels[2].bestThread=11;
+	auroraKernels[3].bestThread=12;
+	auroraKernels[4].bestThread=15;
+	auroraKernels[5].bestThread=14;
+	auroraKernels[6].bestThread=8;
+	auroraKernels[7].bestThread=16;
+	auroraKernels[8].bestThread=16;
+	auroraKernels[9].bestThread=16;*/
+	
+	
         /* Start the counters for energy and time for all the application execution */
         id_actual_region = MAX_KERNEL-1;
         aurora_start_amd_msr();
@@ -58,6 +69,7 @@ int aurora_resolve_num_threads(uintptr_t ptr_region){
                 totalKernels++;
         }
         /* Check the state of the search algorithm. */
+	//apagar sbloco abaixo.
         switch(auroraKernels[id_actual_region].state){
                 case END:
                         auroraKernels[id_actual_region].initResult = omp_get_wtime();  /* It is useful only if the continuous adaptation is enable. Otherwise, it can be disabled */
@@ -67,6 +79,7 @@ int aurora_resolve_num_threads(uintptr_t ptr_region){
                         auroraKernels[id_actual_region].initResult = omp_get_wtime();
                         return auroraKernels[id_actual_region].numThreads;
         }
+	//return auroraKernels[id_actual_region].bestThread;
 
 }
 
